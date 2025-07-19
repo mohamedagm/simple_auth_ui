@@ -8,12 +8,14 @@ class CustomTextField extends StatelessWidget {
     required this.picon,
     this.sicon,
     this.visible,
+    this.hintText,
   });
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final IconData picon;
   final IconButton? sicon;
   final bool? visible;
+  final String? hintText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -21,9 +23,13 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       controller: controller,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.grey[200],
+        hintText: hintText,
         prefixIcon: Icon(picon),
         suffixIcon: sicon,
-        border: OutlineInputBorder(),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
+        contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
       ),
     );
   }
