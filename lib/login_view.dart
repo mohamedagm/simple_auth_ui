@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task/custom_text_field.dart';
+import 'package:flutter_task/register_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -141,7 +142,13 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => RegisterView(),
+                            ),
+                          );
+                        },
                         child: Text(
                           'Sign Up',
                           style: TextStyle(
