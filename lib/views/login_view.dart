@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task/custom_text_field.dart';
-import 'package:flutter_task/register_view.dart';
-import 'package:flutter_task/styles.dart';
+import 'package:flutter_task/core/constants/app_colors.dart';
+import 'package:flutter_task/core/constants/app_strings.dart';
+import 'package:flutter_task/core/theme/app_text_styles.dart';
+import 'package:flutter_task/widgets/custom_elevated_button.dart';
+import 'package:flutter_task/widgets/custom_text_field.dart';
+import 'package:flutter_task/views/register_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -12,13 +15,13 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
+  final userController = TextEditingController();
   final passwordController = TextEditingController();
   bool visible = false;
 
   @override
   void dispose() {
-    emailController.dispose();
+    userController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -31,7 +34,7 @@ class _LoginViewState extends State<LoginView> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF9B28B2), Color(0xFFE3A7F4), Color(0xFFFCE4EC)],
+            colors: [AppColors.kBackColor1, AppColors.kBackColor2],
           ),
         ),
         child: Padding(
@@ -44,24 +47,25 @@ class _LoginViewState extends State<LoginView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('Welcome Back', style: Styles.kLoginTitle),
                     Text(
-                      'Enter your credintial to login',
-                      style: Styles.kLoginSubtitle,
+                      AppStrings.loginHeading,
+                      style: AppTextStyles.kAuthTitle,
+                    ),
+                    Text(
+                      AppStrings.loginSubHeading,
+                      style: AppTextStyles.kAuthSubtitle,
                     ),
                     SizedBox(height: 20),
                     CustomTextField(
-                      hintText: 'Email',
-                      controller: emailController,
+                      hintText: 'Username',
+                      controller: userController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'This field is required';
-                        } else if (!value.contains('@gmail')) {
-                          return 'دخل الايميل عدل يجدع انت';
                         }
                         return null;
                       },
-                      picon: Icons.email,
+                      picon: Icons.person,
                     ),
                     SizedBox(height: 10),
                     CustomTextField(
@@ -91,44 +95,25 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff9B28B2),
-                        minimumSize: Size(
-                          MediaQuery.of(context).size.width - 30,
-                          60,
-                        ),
-                      ),
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'جدع يا حماده تم اصطياد الاكونت الخااص بك\n'
-                                'email: ${emailController.text}\n'
-                                'pass: ${passwordController.text}',
-                              ),
-                            ),
-                          );
-                          emailController.clear();
-                          passwordController.clear();
-                        }
-                      },
-                      child: Text('Login', style: Styles.kButtonText),
+                    CustomElevatedButton(
+                      text: AppStrings.loginSignInTextButton,
+                      formKey: formKey,
+                      emailController: userController,
+                      passwordController: passwordController,
                     ),
                     TextButton(
                       onPressed: () {},
                       child: Text(
-                        'forgot password ?',
-                        style: Styles.kForgotPassword,
+                        AppStrings.loginForgetPass,
+                        style: AppTextStyles.kForgotPassword,
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't have an account?",
-                          style: Styles.kSignUpHint,
+                          AppStrings.loginDontHaveAcc,
+                          style: AppTextStyles.kSignUpHint,
                         ),
                         TextButton(
                           onPressed: () {
@@ -138,7 +123,10 @@ class _LoginViewState extends State<LoginView> {
                               ),
                             );
                           },
-                          child: Text('Sign Up', style: Styles.kSignUpLink),
+                          child: Text(
+                            AppStrings.loginSignUpTextButton,
+                            style: AppTextStyles.kSignUpLink,
+                          ),
                         ),
                       ],
                     ),

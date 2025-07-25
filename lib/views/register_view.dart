@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task/custom_text_field.dart';
+import 'package:flutter_task/core/constants/app_colors.dart';
+import 'package:flutter_task/core/constants/app_strings.dart';
+import 'package:flutter_task/core/theme/app_text_styles.dart';
+import 'package:flutter_task/widgets/custom_elevated_button.dart';
+import 'package:flutter_task/widgets/custom_text_field.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -30,7 +34,7 @@ class _RegisterViewState extends State<RegisterView> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFFFCE4EC), Color(0xFFE3A7F4), Color(0xFF9B28B2)],
+            colors: [AppColors.kBackColor1, AppColors.kBackColor2],
           ),
         ),
         child: Padding(
@@ -44,18 +48,12 @@ class _RegisterViewState extends State<RegisterView> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      AppStrings.registerHeading,
+                      style: AppTextStyles.kAuthTitle,
                     ),
                     Text(
-                      'Create your Account',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                      ),
+                      AppStrings.loginSubHeading,
+                      style: AppTextStyles.kAuthSubtitle,
                     ),
                     SizedBox(height: 20),
                     CustomTextField(
@@ -138,35 +136,11 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff9B28B2),
-                        minimumSize: Size(
-                          MediaQuery.of(context).size.width - 30,
-                          60,
-                        ),
-                      ),
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              backgroundColor: Color.fromARGB(255, 95, 21, 110),
-                              content: Text(
-                                'your Account has been created successfully !'
-                                '😉كدا وكدا',
-                              ),
-                            ),
-                          );
-                          userController.clear();
-                          emailController.clear();
-                          passwordController.clear();
-                          confirmPasswordController.clear();
-                        }
-                      },
-                      child: Text(
-                        'Register',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
+                    CustomElevatedButton(
+                      text: AppStrings.registerTextButton,
+                      formKey: formKey,
+                      emailController: emailController,
+                      passwordController: passwordController,
                     ),
                     SizedBox(height: 10),
                     Row(
@@ -174,7 +148,10 @@ class _RegisterViewState extends State<RegisterView> {
                         Expanded(child: Divider(thickness: 1)),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Text('Or', style: TextStyle(fontSize: 20)),
+                          child: Text(
+                            AppStrings.orSignInWith,
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ),
                         Expanded(child: Divider(thickness: 1)),
                       ],
@@ -183,7 +160,6 @@ class _RegisterViewState extends State<RegisterView> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Color(0xff9B28B2)),
                           borderRadius: BorderRadius.circular(32),
                         ),
                         minimumSize: Size(
@@ -195,7 +171,7 @@ class _RegisterViewState extends State<RegisterView> {
                         // service->repo->cubit
                       },
                       child: Text(
-                        'Sign in with google',
+                        AppStrings.registerSignInGoogle,
                         style: TextStyle(fontSize: 18),
                       ),
                     ),
@@ -203,10 +179,11 @@ class _RegisterViewState extends State<RegisterView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Already have an account?",
+                          AppStrings.registerHaveAcc,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
+                            color: AppColors.kPrimaryColor,
                           ),
                         ),
                         TextButton(
@@ -214,11 +191,11 @@ class _RegisterViewState extends State<RegisterView> {
                             Navigator.of(context).pop();
                           },
                           child: Text(
-                            'Login',
+                            AppStrings.registerSignInTextButton,
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
-                              color: Color.fromARGB(255, 106, 12, 125),
+                              color: AppColors.kPrimaryColor,
                             ),
                           ),
                         ),

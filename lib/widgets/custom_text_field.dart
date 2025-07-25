@@ -24,12 +24,9 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Colors.grey[200],
         hintText: hintText,
         prefixIcon: Icon(picon),
         suffixIcon: sicon,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
-        contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
       ),
     );
   }
