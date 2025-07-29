@@ -6,6 +6,7 @@ A beautiful, clean login and registration UI built using **Flutter**, with custo
 
 - ✅ Login View  
 - ✅ Register View  
+- ✅ Home View (newly added 🎉)
 - ✅ Custom Reusable Text Field Widget
 
 ---
@@ -17,8 +18,9 @@ A beautiful, clean login and registration UI built using **Flutter**, with custo
 - Reusable `CustomTextField` widget to reduce code duplication.
 - Password visibility toggle for better UX.
 - SnackBars to show feedback on successful form submission.
-- Navigation between Login and Register screens.
+- Navigation between Login, Register, and Home screens.
 - Clear form data after successful submission.
+- 🧠 Started using **ThemeData**, `AppColors`, and `AppTextStyles` instead of hardcoded values — improving readability and maintainability.
 
 ---
 
@@ -29,13 +31,17 @@ A beautiful, clean login and registration UI built using **Flutter**, with custo
     <tr>
       <td align="center"><strong>Login View</strong></td>
       <td align="center"><strong>Register View</strong></td>
+      <td align="center"><strong>Home View</strong></td>
     </tr>
     <tr>
       <td>
-        <img src="https://github.com/user-attachments/assets/fdf0d0c1-7ab1-4b8d-b693-0024f8368209" width="250" />
+        <img width="360" height="780" alt="Login View" src="https://github.com/user-attachments/assets/aed61356-c3d8-4d40-a5fb-223304f9a93e" />
       </td>
       <td>
-        <img src="https://github.com/user-attachments/assets/0f868fa7-dcec-48b4-98dc-31395cd80071" width="250" />
+        <img width="360" height="780" alt="Register View" src="https://github.com/user-attachments/assets/e74c5393-91b5-4866-a4af-415f2c5ee03d" />
+      </td>
+      <td>
+        <img width="360" height="780" alt="Home View" src="https://github.com/user-attachments/assets/aee461a9-548c-47d2-a0bb-38254c940ee0" />
       </td>
     </tr>
   </table>
@@ -47,7 +53,8 @@ A beautiful, clean login and registration UI built using **Flutter**, with custo
 
 ```plaintext
 lib/
-├── custom_text_field.dart       # Reusable text form field
-├── login_view.dart              # Login screen UI + validation
-├── register_view.dart           # Registration screen UI + validation
-└── main.dart                    # Entry point
+├── core
+├── views
+├── widgets
+├── utils
+└── main.dart                    # Entry point + theme setup
