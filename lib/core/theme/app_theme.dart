@@ -15,7 +15,7 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(350, 60),
+        minimumSize: const Size(360, 60),
         backgroundColor: AppColors.kPrimaryColor,
         textStyle: AppTextStyles.kButtonText,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
