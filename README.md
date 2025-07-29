@@ -6,21 +6,22 @@ A beautiful, clean login and registration UI built using **Flutter**, with custo
 
 - ✅ Login View  
 - ✅ Register View  
-- ✅ Home View (newly added 🎉)
+- ✅ Home View (newly added 🎉)  
 - ✅ Custom Reusable Text Field Widget
 
 ---
 
 ## ✨ Features
 
-- Gradient background for both screens.
-- Form validation with custom error messages.
-- Reusable `CustomTextField` widget to reduce code duplication.
-- Password visibility toggle for better UX.
-- SnackBars to show feedback on successful form submission.
-- Navigation between Login, Register, and Home screens.
-- Clear form data after successful submission.
-- 🧠 Started using **ThemeData**, `AppColors`, and `AppTextStyles` instead of hardcoded values — improving readability and maintainability.
+- Gradient background for both screens.  
+- Form validation with custom error messages.  
+- Reusable `CustomTextField` widget to reduce code duplication.  
+- Password visibility toggle for better UX.  
+- SnackBars to show feedback on successful form submission.  
+- Navigation between Login, Register, and Home screens.  
+- Clear form data after successful submission.  
+- 🧠 Started using **ThemeData**, `AppColors`, and `AppTextStyles` instead of hardcoded values — improving readability and maintainability.  
+- 🔐 **Firebase Email & Password Authentication** fully integrated for the sign-up flow.
 
 ---
 
@@ -53,8 +54,8 @@ A beautiful, clean login and registration UI built using **Flutter**, with custo
 
 ```plaintext
 lib/
-├── core
-├── views
-├── widgets
-├── utils
-└── main.dart                    # Entry point + theme setup
+├── core                      # Theme, constants, colors
+├── views                     # Login, Register, Home
+├── widgets                   # Custom reusable widgets like CustomTextField
+├── utils                     # Helpers, form validators, etc.
+└── main.dart                 # Entry point + theme setup
